@@ -90,13 +90,17 @@ http://localhost:5000
 
 ## Kubernetes
 
+> **Note:** No Docker Hub username, registry URL, IP address, or domain name is included in this repository for privacy reasons.
+>
+> Before deploying, update the image field in `k8s/flask-deployment.yaml` with your own container image if required.
+
 ### Apply Resources
 
 ```bash
 kubectl apply -f k8s/
 ```
 
-### Check Resources
+### Verify Deployment
 
 ```bash
 kubectl get pods
@@ -104,6 +108,8 @@ kubectl get svc
 ```
 
 ### Access Application
+
+Port-forward the service:
 
 ```bash
 kubectl port-forward svc/flask-service 5000:5000
@@ -123,19 +129,10 @@ kubectl delete -f k8s/
 
 ---
 
-## Useful Commands
+## Notes
 
-### Docker
-
-```bash
-docker ps
-docker logs <container>
-```
-
-### Kubernetes
-
-```bash
-kubectl get all
-kubectl logs deployment/flask-app
+- No usernames, registry URLs, public IPs, domains, or credentials are stored in this repository.
+- All configuration is intended for local development and testing.
+- Replace placeholder image names with your own registry image before deploying to a remote Kubernetes cluster.
 kubectl describe pod <pod-name>
 ```
